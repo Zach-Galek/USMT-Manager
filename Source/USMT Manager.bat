@@ -22,7 +22,6 @@ echo    ^|=========== USMT CLIENT DATA MANAGER ===========^|
 echo    \________________________________________________/
 echo.
 set /p pc="Computer name: "
-echo.
 
 cls
 color 0A
@@ -48,10 +47,20 @@ pause > nul
 goto :choice
 
 :backup
+echo.
+
+cls
+echo     ________________________________________________
+echo    /                                                \
+echo    ^|=========== USMT CLIENT DATA MANAGER ===========^|
+echo    \________________________________________________/
+echo.
+set /p tag="Tag (INC, ticket, etc...): "
+
 cls
 color 0A
 echo Processing backup, please wait...
-echo f|xcopy /s /q /y "\\%server%\USMT$\DATA\%pc%\USMT\USMT.MIG" %backup%\USMT\%server%\%pc%\USMT.mig
+echo f|xcopy /s /i /q /y /f "\\%server%\USMT$\DATA\%pc%\USMT\USMT.MIG" %backup%\USMT\%tag%\USMT.mig > nul
 goto :menu
 
 exit /b
