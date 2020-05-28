@@ -51,7 +51,7 @@ goto :choice
 cls
 color 0A
 echo Processing backup, please wait...
-echo f | xcopy /y "\\%server%\USMT$\DATA\%pc%\USMT\USMT.MIG" %backup%\USMT\%server%\%pc%\USMT.mig
+echo f|xcopy /s /q /y "\\%server%\USMT$\DATA\%pc%\USMT\USMT.MIG" %backup%\USMT\%server%\%pc%\USMT.mig
 goto :menu
 
 exit /b
