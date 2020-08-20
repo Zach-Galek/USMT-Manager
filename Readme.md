@@ -26,16 +26,18 @@ You only need the server's name and the user's PC name. For servers, you only ne
 
 - Use of both server and PC names is permitted
 - Backup functionality for OneDrive
+- Now allows spaces in backup tags
+- Automatically redirects to backup when completed
 
 ## Todo
 
-- Error Handling
+~~- Error Handling
 
-Errors need to be added for missing files or folders in the event a backup does not exist.
+~~Errors need to be added for missing files or folders in the event a backup does not exist.
  
-- Account for Variables With Spaces
+~~- Account for Variables With Spaces
 
-Server or PC names shouldn't contain spaces, but if any do they currently won't be accepted.
+~~Server or PC names shouldn't contain spaces, but if any do they currently won't be accepted.
  
 - MIG View
 

@@ -1,6 +1,6 @@
 @echo off
 
-for %%a in ("%userprofile%\OneDrive - CenturyLink\[Backups]") do (set backup=%%a)
+set backup=%userprofile%\OneDrive - CenturyLink\[Backups]
 
 :menu
 color 05 & title USMT Manager
@@ -26,7 +26,8 @@ set /p pc="Computer name: "
 cls
 color 0A
 echo Resolving directory, please wait...
-explorer /select, "\\%server%\USMT$\DATA\%pc%\USMT\USMT.MIG"
+if not exist "\\%server%\USMT$\DATA\USA-%pc%" goto :nodata
+explorer /select, "\\%server%\USMT$\DATA\USA-%pc%\USMT\USMT.MIG"
 
 :choice
 cls
@@ -55,12 +56,20 @@ echo    /                                                \
 echo    ^|=========== USMT CLIENT DATA MANAGER ===========^|
 echo    \________________________________________________/
 echo.
-set /p tag="Tag (INC, ticket, etc...): "
+set /p tag="Backup name: "
 
 cls
 color 0A
 echo Processing backup, please wait...
-echo f|xcopy /s /i /q /y /f "\\%server%\USMT$\DATA\%pc%\USMT\USMT.MIG" %backup%\USMT\%tag%\USMT.mig > nul
+echo f|xcopy /s /i /q /y /f "\\%server%\USMT$\DATA\USA-%pc%\USMT\USMT.MIG" "%backup%\USMT\%tag%\USMT.mig" > nul
+explorer /select, "%backup%\USMT\%tag%\USMT.mig"
+goto :menu
+
+:nodata
+cls
+color 0C
+echo Error, no data found for USA-%pc%!
+pause > nul
 goto :menu
 
 exit /b
